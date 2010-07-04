@@ -12,12 +12,12 @@
     implementation-features)
   (import
     (rnrs)
-    (only (core) architecture-feature)
+    (only (mosh) host-os)
     (surfage private OS-id-features))
   
   (define (OS-features)
     (OS-id-features
-     (architecture-feature 'operating-system)
+      (host-os)
      '(("linux" linux posix)
        ("bsd" bsd posix)
        ("darwin" darwin posix)
