@@ -1,5 +1,6 @@
 (library (srfi s78)
-         (export )
+         (export check check-ec check-report 
+                 check-set-mode!  check-reset!  check-passed?)
          (import (srfi s42)
                  (scheme write)
                  (scheme base))
@@ -60,16 +61,16 @@
 
 ; -- mode --
 
-(define check:mode #f)
+(define check:mode (make-parameter #f))
 
 (define (check-set-mode! mode)
-  (set! check:mode
-        (case mode
-          ((off)           0)
-          ((summary)       1)
-          ((report-failed) 10)
-          ((report)        100)
-          (else (error "unrecognized mode" mode)))))
+  (check:mode
+    (case mode
+      ((off)           0)
+      ((summary)       1)
+      ((report-failed) 10)
+      ((report)        100)
+      (else (error "unrecognized mode" mode)))))
 
 
 ; -- state --
@@ -117,7 +118,7 @@
   (newline))
 
 (define (check-report)
-  (if (>= check:mode 1)
+  (if (>= (check:mode) 1)
       (begin
         (newline)
         (display "; *** checks *** : ")
@@ -125,7 +126,7 @@
         (display " correct, ")
         (display (length check:failed))
         (display " failed.")
-        (if (or (null? check:failed) (<= check:mode 1))
+        (if (or (null? check:failed) (<= (check:mode) 1))
             (newline)
             (let* ((w (car (reverse check:failed)))
                    (expression (car w))
@@ -144,7 +145,7 @@
 ; -- simple checks --
 
 (define (check:proc expression thunk equal expected-result)
-  (case check:mode
+  (case (check:mode)
     ((0) #f)
     ((1)
      (let ((actual-result (thunk)))
@@ -171,7 +172,7 @@
                   (check:add-failed! expression 
 				     actual-result 
 				     expected-result)))))
-    (else (error "unrecognized check:mode" check:mode)))
+    (else (error "unrecognized check:mode" (check:mode))))
   (if #f #f))
 
 (define-syntax check
@@ -179,7 +180,7 @@
     ((check expr => expected)
      (check expr (=> equal?) expected))
     ((check expr (=> equal) expected)
-     (if (>= check:mode 1)
+     (if (>= (check:mode) 1)
 	 (check:proc 'expr (lambda () expr) equal expected)))))
 
 ; -- parametric checks --
@@ -191,12 +192,12 @@
         (expected-result (cadddr w))
 	(cases (car (cddddr w))))
     (if correct?
-        (begin (if (>= check:mode 100)
+        (begin (if (>= (check:mode) 100)
                    (begin (check:report-expression expression)
                           (check:report-actual-result actual-result)
                           (check:report-correct cases)))
                (check:add-correct!))
-        (begin (if (>= check:mode 10)
+        (begin (if (>= (check:mode) 10)
                    (begin (check:report-expression expression)
                           (check:report-actual-result actual-result)
                           (check:report-failed expected-result)))
@@ -207,7 +208,7 @@
 (define-syntax check-ec:make
   (syntax-rules (=>)
     ((check-ec:make qualifiers expr (=> equal) expected (arg ...))
-     (if (>= check:mode 1)
+     (if (>= (check:mode) 1)
          (check:proc-ec
 	  (let ((cases 0))
 	    (let ((w (first-ec 
