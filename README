@@ -1,6 +1,28 @@
 (In progress)
 
-LIBS:
+R7RS-bridge Project
+===================
 
-surfage - win32 patched..
+R7RS-bridge project is a reserch project which aims to:
+
+ - Prepare R6RS library which implements R7RS small language
+ - Tryout R7RS small language by implementing various library
+
+
+
+LIBS
+----
+
+surfage - win32 patched version of Surfage library.
+
+ Source : https://github.com/dharmatech/surfage
+ License: Checking (BSD like)
+
+TESTS
+-----
+
+laceny-R6RS - R6RS benchmarks
+ Source : (Larceny)
+ License: Unknown. 
+
 
