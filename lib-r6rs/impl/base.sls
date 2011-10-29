@@ -42,12 +42,14 @@
 caddr cadddr
    )
          (import (except (rnrs)
+                         error
                          define-record-type)
                  (rnrs mutable-pairs)
                  (rnrs mutable-strings)
                  (rnrs r5rs)
                  (only (surfage s13 strings)
                        string-map)
+                 (surfage s23 error)
                  (surfage s9 records)
                  (surfage s39 parameters)
                  )
@@ -75,7 +77,7 @@ caddr cadddr
 (define port-open? 0)
 (define read-bytevector 0)
 (define read-bytevector! 0)
-(define read-line 0)
+(define read-line get-line)
 (define read-u8 0)
 (define string->vector 0)
 (define syntax-error 0)
