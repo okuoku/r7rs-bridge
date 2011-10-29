@@ -5,7 +5,7 @@
 ;; license must also be included.
 
 #!r6rs
-(library (surfage s2 and-let*)  
+(library (surfage s2 and-let)  
   (export 
     and-let*)
   (import 
