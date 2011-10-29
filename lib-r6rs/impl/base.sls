@@ -39,6 +39,7 @@
    vector-ref vector-set!  vector?  when with-exception-handler
    write-bytevector write-char write-partial-bytevector write-u8 zero?
 
+caddr
    )
          (import (except (rnrs)
                          define-record-type)

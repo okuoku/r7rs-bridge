@@ -39,6 +39,9 @@
    vector-ref vector-set!  vector?  when with-exception-handler
    write-bytevector write-char write-partial-bytevector write-u8 zero?
 
+;; missing from chibi-scheme
+caddr
+
    )
          (import (impl base)))
 
