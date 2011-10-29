@@ -40,7 +40,7 @@
    write-bytevector write-char write-partial-bytevector write-u8 zero?
 
 ;; missing from chibi-scheme
-caddr
+caddr cadddr
 
    )
          (import (impl base)))
