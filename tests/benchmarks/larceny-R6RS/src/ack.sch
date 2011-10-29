@@ -1,7 +1,8 @@
 ;;; ACK -- One of the Kernighan and Van Wyk benchmarks.
 
-(import (rnrs base)
-        (rnrs io simple))
+(import (scheme base)
+        (scheme write)
+        (scheme read))
 
 (define (ack m n)
   (cond ((= m 0) (+ n 1))
