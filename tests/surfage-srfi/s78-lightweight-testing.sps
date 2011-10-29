@@ -88,4 +88,4 @@
 
 ; -- reporting --
 
-;; (check-report)
+(check-report)

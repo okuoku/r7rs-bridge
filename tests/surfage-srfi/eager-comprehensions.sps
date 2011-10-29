@@ -1,4 +1,3 @@
-#!r6rs
 ; <PLAINTEXT>
 ; Examples for Eager Comprehensions in [outer..inner|expr]-Convention
 ; ===================================================================
@@ -29,16 +28,25 @@
 ;   (load "examples.scm")
 
 (import
-  (except (rnrs) error)
-  (rnrs mutable-strings)
-  (surfage s42 eager-comprehensions)
-  (surfage s23 error))
+  (srfi s42)
+  (scheme base)
+  (scheme file)
+  (scheme read)
+  (scheme write))
 
+(define get-line read-line)
+
+#|
 (define (my-open-output-file filename)
   (open-file-output-port filename 
                          (file-options no-fail)
                          'block
                          (native-transcoder)))
+|#
+(define (my-open-output-file filename)
+  (if (file-exists? filename)
+    (delete-file filename))
+  (open-output-file filename))
 
 (define (my-call-with-input-file filename thunk)
   (call-with-input-file filename thunk))
@@ -639,3 +647,5 @@
   (display my-check-wrong)
   (newline)
   (newline) )
+
+(and (file-exists? "tmp1") (delete-file "tmp1"))
