@@ -812,22 +812,22 @@
            #f )))))))
 
 (define :-dispatch
-  (make-initial-:-dispatch) )
+  (make-parameter (make-initial-:-dispatch) ))
 
 (define (:-dispatch-ref)
-  :-dispatch )
+  (:-dispatch) )
 
 (define (:-dispatch-set! dispatch)
   (if (not (procedure? dispatch))
       (error "not a procedure" dispatch) )
-  (set! :-dispatch dispatch) )
+  (:-dispatch dispatch) )
 
 (define-syntax :
   (syntax-rules (index)
     ((: cc var (index i) arg1 arg ...)
-     (:dispatched cc var (index i) :-dispatch arg1 arg ...) )
+     (:dispatched cc var (index i) (:-dispatch) arg1 arg ...) )
     ((: cc var arg1 arg ...)
-     (:dispatched cc var :-dispatch arg1 arg ...) )))
+     (:dispatched cc var (:-dispatch) arg1 arg ...) )))
 
 
 ; ==========================================================================
