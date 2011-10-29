@@ -40,5 +40,5 @@
    write-bytevector write-char write-partial-bytevector write-u8 zero?
 
    )
-         (import (bridge-impl base)))
+         (import (impl base)))
 

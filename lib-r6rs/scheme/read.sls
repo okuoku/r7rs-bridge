@@ -1,4 +1,4 @@
 #!r6rs
-(import (scheme read)
+(library (scheme read)
         (export read)
         (import (impl read)))

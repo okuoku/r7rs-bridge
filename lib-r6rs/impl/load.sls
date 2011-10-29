@@ -1,3 +1,7 @@
 (library (impl load)
          (export load)
-         (import (rnrs)))
+         (import (rnrs))
+         
+(define load 0)
+         
+)

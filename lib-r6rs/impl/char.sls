@@ -8,4 +8,6 @@
    string-ci<=? string-ci<? string-ci=? string-ci>=? string-ci>?
    string-downcase string-foldcase string-upcase
    )
-         (import (rnrs)))
+         (import (rnrs))
+(define numeric-digit 0)
+)

@@ -3,4 +3,4 @@
          (export
 ;; from chibi-scheme
 get-environment-variable get-environment-variables command-line exit)
-         (import (rnrs)))
+         (import (rnrs) (surfage s98 os-environment-variables)))

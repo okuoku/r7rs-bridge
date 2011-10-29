@@ -9,4 +9,7 @@
    open-input-file open-output-file
    with-input-from-file with-output-to-file
    )
-         (import (rnrs)))
+         (import (rnrs))
+(define open-binary-input-file 0)
+(define open-binary-output-file 0)
+)
