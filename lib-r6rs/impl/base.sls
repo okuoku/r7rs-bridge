@@ -39,7 +39,7 @@
    vector-ref vector-set!  vector?  when with-exception-handler
    write-bytevector write-char write-partial-bytevector write-u8 zero?
 
-caddr cadddr
+caddr cadddr cdddr cddr
    )
          (import (except (rnrs)
                          error
