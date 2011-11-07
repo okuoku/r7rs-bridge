@@ -9,14 +9,74 @@ R7RS-bridge project is a reserch project which aims to:
  - Tryout R7RS small language by implementing various library
 
 
+Supported Implementation
+------------------------
 
-LIBS
-----
+- nmosh / mosh ( http://github.com/higepon/mosh )
+
+We use nmosh as a baseline interpreter.
+
+- (Other R6RS, except Racket)
+
+Racket cannot use R6RS libraries without #!r6rs marker.
+TODO: Test other R6RS impl and list here..
+
+- "Patched" chibi-scheme ( https://github.com/okuoku/chibi-scheme )
+
+Original chibi-scheme cannot recognize the file with ".sls" extension as a
+library.
+
+
+How to use
+----------
+
+ - MOSH -
+
+   nmosh --loadpath=lib-r6rs:lib SCRIPT.SPS
+
+
+ - Patched chibi-scheme -
+
+   chibi-scheme -Ilib SCRIPT.SPS
+
+
+
+Library format
+--------------
+
+"R7RS-bridge" formatted libraries are valid R6RS library with R7RS friendly
+structure.
+
+   (library (example library)
+            (export func)
+            (import (scheme base)
+                    (another library))
+            (begin
+               ;;; Library content ....
+
+               ))
+
+Note that the "export - import - begin" sequence is mandatory for compatibility
+with R7RS. (ie. don't forget to add a begin around library body...)
+
+In this format, just replacing s/library/define-library/ will create valid
+R7RS library.
+
+In library entry, you cannot use R6RS-only reader syntax. Namely:
+
+   Bytevectors:   #vu8( ... ) notation is not supported by R7RS.
+   Flags:         #!r6rs ...
+   Syntax, Quasi-syntax: #'...
+
+
+R6RS Backend Libraries
+----------------------
 
 surfage - win32 patched version of Surfage library.
 
  Source : https://github.com/dharmatech/surfage
  License: Checking (BSD like)
+
 
 TESTS
 -----
