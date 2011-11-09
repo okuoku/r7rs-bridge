@@ -1,4 +1,4 @@
 #!r6rs
 (library (scheme lazy)
-         (export delay force lazy eager)
+         (export delay eager force lazy)
          (import (impl lazy)))

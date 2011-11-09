@@ -1,4 +1,4 @@
 #!r6rs
 (library (impl lazy)
-         (export delay force lazy eager)
+         (export delay eager force lazy)
          (import (base-srfi s45)))

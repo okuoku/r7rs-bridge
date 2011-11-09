@@ -1,6 +1,6 @@
 #!r6rs
 (library (impl char normalization)
-         (export string-ni=? string-ni<? string-ni>? string-ni<=? string-ni>=?)
+         (export string-ni<=? string-ni<? string-ni=? string-ni>=? string-ni>?)
          (import (rnrs))
 (define string-ni=? 0)
 (define string-ni<? 0)

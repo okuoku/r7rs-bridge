@@ -1,4 +1,4 @@
 #!r6rs
 (library (scheme time)
-        (export current-second current-jiffy jiffies-per-second)
+        (export current-jiffy current-second jiffies-per-second)
         (import (impl time)))
