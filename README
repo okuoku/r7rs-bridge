@@ -25,6 +25,11 @@ We use nmosh as a baseline interpreter.
   Unsupported features: 
     R7RS: get-environment-variables (SRFI-98)
 
+- IronScheme (1.0 RC6)
+  Unsupported features:
+    weak-vectors
+    Compile (pre-expand program/library)
+
 - (Other R6RS, except Racket)
 
 Racket cannot use R6RS libraries without #!r6rs marker.
@@ -53,10 +58,13 @@ How to use
 
    In Win32, use --libdirs lib-r6rs;lib (semicolon)
 
+ - IronScheme -
+
+   IronScheme.Console.exe load/ironscheme.scm SCRIPT.SPS
+
  - Patched chibi-scheme -
 
    chibi-scheme -Ilib SCRIPT.SPS
-
 
 
 Library format
