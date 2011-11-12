@@ -50,7 +50,7 @@ How to use
 
  - GUILE -
 
-   guile -l load/guile.scm -L lib-r6rs -L lib SCRIPT.SPS
+   guile -l load/guile.scm SCRIPT.SPS
 
  - CHEZ SCHEME -
 
