@@ -2,7 +2,7 @@
 (library (implbase lib write-string-external)
          (export write-string-external)
          (import 
-           (scheme write)
+           (only (rnrs) write) 
            (scheme base))
          (begin
 

@@ -2,11 +2,10 @@
 (library (implbase lib write-string)
          (export write-string)
          (import 
-           (scheme write)
            (scheme base))
          (begin
 
 (define (write-string obj port)
-  (display obj port))
+  (string-for-each (lambda (c) (write-char c port)) obj))
 
 ))
