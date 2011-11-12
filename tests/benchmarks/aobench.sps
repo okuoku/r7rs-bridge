@@ -9,6 +9,7 @@
 (define (random-real) 0.2)
 
 (define PI 3.141592)
+(define FAR (exact->inexact (expt 10 30)))
 
 (define-syntax vec
   (syntax-rules ()
@@ -182,7 +183,7 @@
                                              (+ (* x (vz b0)) (* y (vz b1)) (* z (vz b2)))))))
                        (ntheta-nphi-loop j (+ 1 i) 
                                   (if (is-hit (thePlane (theS2 (theS1 (theS0 
-                                                                        (make-intersection 1.0e+30
+                                                                        (make-intersection FAR
                                                                                            (vec 0.0 0.0 0.0) 
                                                                                            (vec 0.0 0.0 0.0) 
                                                                                            #f) ray) ray) ray) ray))
@@ -201,7 +202,7 @@
             (let* ((ray (new-ray (vec 0.0 0.0 0.0) (vnormalize (vec px py -1.0))))
                    (isect
                      (thePlane (theS2 (theS1 (theS0 
-                                               (make-intersection 1.0e+30 
+                                               (make-intersection FAR
                                                                   (vec 0.0 0.0 0.0) 
                                                                   (vec 0.0 0.0 0.0) 
                                                                   #f) ray) ray) ray) ray)))
