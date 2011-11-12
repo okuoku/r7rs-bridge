@@ -2,5 +2,5 @@
 (library (impl write)
          (export display write write-simple)
          (import (rnrs))
-(define write-simple 0)
+(define write-simple write)
 )
