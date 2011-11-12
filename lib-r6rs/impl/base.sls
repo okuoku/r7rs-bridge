@@ -50,9 +50,25 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (surfage s23 error)
                  (surfage s9 records)
                  (surfage s39 parameters)
-
+                 (r7b-util metadata)
                  )
          
+(define syntax-error 0)
+(define import 0)
+(define char-ready? 0)
+;; FIXME: use metadata to retrive port state
+(define (port-open? port) #t)
+(define get-output-bytevector 0)
+(define get-output-string 0)
+(define open-input-bytevector 0)
+(define open-input-string 0)
+(define open-output-bytevector 0)
+(define open-output-string 0)
+(define u8-ready? 0)
+(define error-object-irritants 0)
+(define error-object-message 0)
+(define error-object? 0)
+
 (define (bytevector-copy-partial bv start end)
   (let ((ret (make-bytevector (- end start))))
     (define (itr cur)
@@ -70,44 +86,92 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
         (itr (+ cur 1)))))
   (itr 0))
 
-(define char-ready? 0)
-(define define-values 0)
-(define error-object-irritants 0)
-(define error-object-message 0)
-(define error-object? 0)
-(define exact-integer? 0)
-(define get-output-bytevector 0)
-(define get-output-string 0)
-(define import 0)
+
+(define-syntax define-values
+  (lambda (x)
+    (syntax-case x ()
+      ((_ (val ...) body)
+       (with-syntax (((name ...)
+                      (generate-temporaries #'(val ...)))
+                     ((tmp ...)
+                      (generate-temporaries #'(val ...))))
+         #'(begin
+             (define name #f)
+             ...
+             (define bogus
+               (begin
+                 (call-with-values (lambda () body)
+                                   (lambda (tmp ...)
+                                     (set! name tmp)
+                                     ...
+                                     ))))
+             (define val name)
+             ...
+             ))))))
+
+(define (exact-integer? i) (and (integer? i) (exact? i)))
+
 (define (list-copy l) (map (lambda (e) e) l))
+
 (define (list-set! l k obj) 
   (define (itr cur count)
     (unless (= count k) (itr (cdr cur) (+ count 1)))
     (set-car! cur obj))
   (itr l 0))
+
 (define make-list
   (case-lambda
     ((k fil) (vector->list (make-vector k fil)))
     ((k) (make-list k 'unspecified))))
-(define open-input-bytevector 0)
-(define open-input-string 0)
-(define open-output-bytevector 0)
-(define open-output-string 0)
-(define peek-u8 0)
-(define port-open? 0)
-(define read-bytevector 0)
-(define read-bytevector! 0)
-(define read-line get-line)
-(define read-u8 get-u8)
+
+(define peek-u8 
+  (case-lambda
+    (() (peek-u8 (current-input-port)))
+    ((port)
+     (lookahead-u8 port))))
+
+(define read-bytevector 
+  (case-lambda
+    ((len) (read-bytevector len (current-input-port)))
+    ((len port) (get-bytevector-n port len))))
+
+(define read-bytevector!
+  (case-lambda
+    ((bv start end)
+     (read-bytevector! bv start end (current-input-port)))
+    ((bv start end port)
+     (get-bytevector-n! port bv start (- end start)))))
+
+(define read-line
+  (case-lambda 
+    (() (read-line (current-input-port)))
+    ((port) (get-line port))))
+
+(define write-u8
+  (case-lambda
+    ((obj) (write-u8 obj (current-output-port)))
+    ((obj port) (put-u8 port obj))))
+
+(define read-u8
+  (case-lambda
+    (() (read-u8 (current-input-port)))
+    ((port) (get-u8 port))))
+
 (define (string->vector str) (list->vector (string->list str)))
-(define syntax-error 0)
-(define u8-ready? 0)
 (define (vector->string vec) (list->string (vector->list vec)))
 (define (vector-copy vec) (list->vector (vector->list vec)))
-(define write-bytevector 0)
-(define write-partial-bytevector 0)
-(define write-u8 put-u8)
 
-         
-         )
+(define write-bytevector
+  (case-lambda
+    ((bv port)
+     (put-bytevector port bv))
+    ((bv) (write-bytevector bv (current-output-port))))) 
 
+(define write-partial-bytevector
+  (case-lambda
+    ((bv start end) (write-partial-bytevector bv start end 
+                                              (current-output-port)))
+    ((bv start end port)
+     (put-bytevector port bv start (- end start)))))
+
+)
