@@ -25,13 +25,12 @@
   (try h))
 
 (define (make-q obj data)
-  (let ((wv (make-weak-vector 2)))
+  (let ((wv (make-weak-vector 1)))
     (weak-vector-set! wv obj 0)
-    (weak-vector-set! wv obj 1)
-    wv))
+    (cons wv data)))
 
-(define (q-obj q) (weak-vector-ref q 0))
-(define (q-data q) (weak-vector-ref q 1))
+(define (q-obj q) (weak-vector-ref (car q) 0))
+(define (q-data q) (cdr q))
 
 (define (weak-hashtable-ref wht obj) 
   (define (check h)
