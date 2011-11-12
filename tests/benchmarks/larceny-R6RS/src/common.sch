@@ -1,3 +1,8 @@
+;;; r7b: Asset-path procedure
+
+(define (asset str)
+  (define asset-home (cadr (command-line)))
+  (string-append asset-home str))
 
 ;;; The following code is appended to all benchmarks.
 

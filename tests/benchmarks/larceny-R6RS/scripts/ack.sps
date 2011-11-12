@@ -22,6 +22,11 @@
      count
      (lambda () (ack (hide count input1) (hide count input2)))
      (lambda (result) (= result output)))))
+;;; r7b: Asset-path procedure
+
+(define (asset str)
+  (define asset-home (cadr (command-line)))
+  (string-append asset-home str))
 
 ;;; The following code is appended to all benchmarks.
 

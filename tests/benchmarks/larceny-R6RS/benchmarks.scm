@@ -18,7 +18,7 @@
 
 (io . (read0 read1 read2 read3))
 
-(other . (bibfreq bibfreq2 compiler conform dynamic earley graphs lattice matrix maze mazefun nqueens paraffins parsing peval pi primes quicksort ray scheme simplex slatex))
+(other . (bibfreq bibfreq2 "compiler" conform dynamic earley graphs lattice matrix maze mazefun nqueens paraffins parsing peval pi primes quicksort ray scheme simplex slatex))
 
 (gc . (nboyer sboyer gcbench mperm))
 
