@@ -16,8 +16,14 @@ Supported Implementation
 
 We use nmosh as a baseline interpreter.
 
-- Guile 2.x
-  Unsupported feature: weak-vectors, srfi-0
+- Guile 2.x (2.0.3)
+  Unsupported features: weak-vectors, srfi-0
+
+- Petite Chez Scheme 8.x (8.4)
+  Unimplemented features:
+    weak-vectors
+  Unsupported features: 
+    R7RS: get-environment-variables (SRFI-98)
 
 - (Other R6RS, except Racket)
 
