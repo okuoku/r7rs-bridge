@@ -47,6 +47,12 @@ How to use
 
    guile -l load/guile.scm -L lib-r6rs -L lib SCRIPT.SPS
 
+ - CHEZ SCHEME -
+
+   petite --libdirs lib-r6rs:lib --libext sls --program SCRIPT.SPS
+
+   In Win32, use --libdirs lib-r6rs;lib (semicolon)
+
  - Patched chibi-scheme -
 
    chibi-scheme -Ilib SCRIPT.SPS
