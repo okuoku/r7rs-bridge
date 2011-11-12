@@ -2,7 +2,7 @@
          (export make-weak-eq-hashtable
                  weak-hashtable-set!
                  weak-hashtable-ref)
-         (import (rnrs) (r7b-util weak-vectors))
+         (import (rnrs) (r7b-util weak-box))
 
 (define (weak-hashtable-gc wht)
   (define (check key value)
@@ -25,11 +25,11 @@
   (try h))
 
 (define (make-q obj data)
-  (let ((wv (make-weak-vector 1)))
-    (weak-vector-set! wv obj 0)
+  (let ((wv (make-weak-box)))
+    (weak-box-set! wv obj)
     (cons wv data)))
 
-(define (q-obj q) (weak-vector-ref (car q) 0))
+(define (q-obj q) (weak-box-ref (car q) 0))
 (define (q-data q) (cdr q))
 
 (define (weak-hashtable-ref wht obj) 

@@ -1,12 +1,12 @@
-(library (r7b-util weak-vectors)
-         (export make-weak-vector
-                 weak-vector-ref
-                 weak-vector-set!)
-         (import (rnrs))
+(library (r7b-util weak-box)
+         (export make-weak-box
+                 weak-box-ref
+                 weak-box-set!)
+         (import (rnrs) (rnrs mutable-pairs))
          
-(define (make-weak-vector size) (make-vector size))         
-(define weak-vector-ref vector-ref)
-(define weak-vector-set! vector-set!)
+(define (make-weak-box) (cons #f #f))
+(define (weak-box-ref wb) (car wb))
+(define (weak-box-set! wb obj) (set-car! wb obj))
          
 (display "WARNING: Using FAKE implementation of weak-vectors." 
          (current-error-port))
