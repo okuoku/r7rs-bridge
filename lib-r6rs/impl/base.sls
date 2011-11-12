@@ -53,21 +53,43 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (r7b-util metadata)
                  )
          
-(define syntax-error 0)
-(define import 0)
+;; R7RS-bridge format doesn't allow (begin (import ...) ...)
+(define-syntax import
+  (lambda (x)
+    (syntax-case x ()
+      ((_ ...) (assertion-violation 'import
+                                    "Not allowed here..")))))
+
+(define-syntax syntax-error
+  (lambda (x)
+    (syntax-case x ()
+      ((_ message args ...) (syntax-violation 'syntax-error
+                                              #'message
+                                              (quote  #'(args ...)))))))
+;; R7RS error object will be mapped to R6RS condition object
+(define error-object? condition?)
+
+(define (error-object-irritants obj) 
+  (and (irritants-condition? obj)
+       (condition-irritants obj)))
+
+(define (error-object-message obj)
+  (and (message-condition? obj)
+       (condition-message obj)))
+
+;; FIXME:
 (define char-ready? 0)
+(define u8-ready? 0)
+
 ;; FIXME: use metadata to retrive port state
 (define (port-open? port) #t)
+
 (define get-output-bytevector 0)
 (define get-output-string 0)
 (define open-input-bytevector 0)
 (define open-input-string 0)
 (define open-output-bytevector 0)
 (define open-output-string 0)
-(define u8-ready? 0)
-(define error-object-irritants 0)
-(define error-object-message 0)
-(define error-object? 0)
 
 (define (bytevector-copy-partial bv start end)
   (let ((ret (make-bytevector (- end start))))
