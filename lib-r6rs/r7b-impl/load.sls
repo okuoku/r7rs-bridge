@@ -1,7 +1,4 @@
+#!r6rs
 (library (r7b-impl load)
          (export load)
-         (import (rnrs))
-         
-(define load 0)
-         
-)
+         (import (r7b-util eval)))

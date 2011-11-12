@@ -1,6 +1,4 @@
 #!r6rs
 (library (r7b-impl repl)
          (export interaction-environment)
-         (import (rnrs))
-(define interaction-environment 0)
-)
+         (import (r7b-util eval)))
