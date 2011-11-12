@@ -1,4 +1,4 @@
-(library (impl load)
+(library (r7b-impl load)
          (export load)
          (import (rnrs))
          

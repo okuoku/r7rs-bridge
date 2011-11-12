@@ -1,5 +1,5 @@
 #!r6rs
-(library (impl division)
+(library (r7b-impl division)
          (export
 ;; from R7RS draft 4
 ceiling-quotient ceiling-remainder ceiling/ centered-quotient centered-remainder

@@ -1,4 +1,4 @@
 #!r6rs
 (library (scheme char normalization)
          (export string-ni<=? string-ni<? string-ni=? string-ni>=? string-ni>?)
-         (import (impl char normalization)))
+         (import (r7b-impl char normalization)))

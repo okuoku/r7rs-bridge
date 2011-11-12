@@ -1,5 +1,5 @@
 #!r6rs
-(library (impl process-context)
+(library (r7b-impl process-context)
          (export
 ;; from R7RS draft 4
 command-line exit get-environment-variable get-environment-variables

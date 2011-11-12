@@ -1,5 +1,5 @@
 #!r6rs
-(library (impl time)
+(library (r7b-impl time)
         (export current-jiffy current-second jiffies-per-second)
         (import (rnrs))
 (define current-second 0)

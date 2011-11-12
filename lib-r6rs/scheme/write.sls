@@ -1,4 +1,4 @@
 #!r6rs
 (library (scheme write)
          (export display write write-simple)
-         (import (impl write)))
+         (import (r7b-impl write)))

@@ -37,5 +37,5 @@ vector->string vector-copy vector-fill! vector-for-each vector-length
 vector-map vector-ref vector-set! vector?  when with-exception-handler
 write-bytevector write-char write-partial-bytevector write-u8 zero?
    )
-         (import (impl base)))
+         (import (r7b-impl base)))
 

@@ -1,5 +1,5 @@
 #!r6rs
-(library (impl base)
+(library (r7b-impl base)
          (export
 
 ;; from R7RS draft 4

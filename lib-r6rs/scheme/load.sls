@@ -1,3 +1,3 @@
 (library (scheme load)
          (export load)
-         (import (impl load)))
+         (import (r7b-impl load)))

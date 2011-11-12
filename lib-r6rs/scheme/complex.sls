@@ -4,4 +4,4 @@
 ;; from R7RS draft 4
 angle imag-part magnitude make-polar make-rectangular real-part
 )
-         (import (impl complex)))
+         (import (r7b-impl complex)))

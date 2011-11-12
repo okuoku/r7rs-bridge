@@ -1,5 +1,5 @@
 #!r6rs
-(library (impl file)
+(library (r7b-impl file)
          (export 
 ;; from R7RS draft 4
 call-with-input-file call-with-output-file delete-file file-exists?

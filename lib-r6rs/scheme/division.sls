@@ -7,4 +7,4 @@ centered/ euclidean-quotient euclidean-remainder euclidean/ floor-quotient
 floor-remainder floor/ round-quotient round-remainder round/ truncate-quotient
 truncate-remainder truncate/
           )
-         (import (impl division)))
+         (import (r7b-impl division)))

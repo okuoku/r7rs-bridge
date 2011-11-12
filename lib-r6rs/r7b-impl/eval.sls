@@ -1,5 +1,5 @@
 #!r6rs
-(library (impl eval)
+(library (r7b-impl eval)
          (export environment eval null-environment scheme-report-environment)
          (import (rnrs) (rnrs eval))
          

@@ -1,4 +1,4 @@
 #!r6rs
-(library (impl case-lambda)
+(library (r7b-impl case-lambda)
          (export case-lambda)
          (import (rnrs)))
