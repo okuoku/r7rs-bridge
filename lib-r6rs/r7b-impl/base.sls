@@ -39,6 +39,7 @@ vector-map vector-ref vector-set! vector?  when with-exception-handler
 write-bytevector write-char write-partial-bytevector write-u8 zero?
    )
          (import (except (rnrs)
+                         syntax-rules
                          error
                          define-record-type)
                  (rnrs mutable-pairs)
@@ -51,8 +52,9 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (srfi i9)
                  (srfi i39)
                  (r7b-util metadata)
+                 (for (r7b-util syntax-rules) run expand)
                  )
-         
+
 ;; R7RS-bridge format doesn't allow (begin (import ...) ...)
 (define-syntax import
   (lambda (x)
