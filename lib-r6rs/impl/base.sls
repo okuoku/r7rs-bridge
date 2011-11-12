@@ -44,7 +44,7 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (rnrs mutable-pairs)
                  (rnrs mutable-strings)
                  (rnrs r5rs)
-                 (only (surfage s13 strings)
+                 (only (srfi i13)
                        string-map)
                  (srfi i0)
                  (srfi i23)

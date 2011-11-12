@@ -16,6 +16,9 @@ Supported Implementation
 
 We use nmosh as a baseline interpreter.
 
+- Guile 2.x
+  Unsupported feature: weak-vectors, srfi-0
+
 - (Other R6RS, except Racket)
 
 Racket cannot use R6RS libraries without #!r6rs marker.
@@ -34,6 +37,9 @@ How to use
 
    nmosh --loadpath=lib-r6rs:lib SCRIPT.SPS
 
+ - GUILE -
+
+   guile -l load/guile.scm -L lib-r6rs -L lib SCRIPT.SPS
 
  - Patched chibi-scheme -
 
