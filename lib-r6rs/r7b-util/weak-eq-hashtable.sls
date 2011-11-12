@@ -5,6 +5,6 @@
          (import (rnrs))
 (define weak-hashtable-set! hashtable-set!)
 (define weak-hashtable-ref hashtable-ref)
-(define make-weak-eq-hashtable make-hashtable)
+(define make-weak-eq-hashtable make-eq-hashtable)
 
 )

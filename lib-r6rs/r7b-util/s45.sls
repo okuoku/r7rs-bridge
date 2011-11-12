@@ -1,4 +1,4 @@
-(library (base-srfi s45)
+(library (r7b-util s45)
          (export lazy eager delay force)
          (import (scheme base))
 
