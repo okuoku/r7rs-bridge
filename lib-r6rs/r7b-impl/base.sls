@@ -51,7 +51,8 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (srfi i23)
                  (srfi i9)
                  (srfi i39)
-                 (r7b-util metadata)
+                 (r7b-util string-buffer)
+                 (r7b-util bytevector-buffer)
                  (for (r7b-util syntax-rules) run expand)
                  )
 
@@ -86,37 +87,13 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
 ;; FIXME: use metadata to retrive port state
 (define (port-open? port) #t)
 
-(define %buffer-port-id '*buffer-port*)
-(define (%get-buffered-data port)
-  (let ((d (metadata-ref port)))
-    (unless d 
-      (assertion-violation '%get-buffered-data
-                           "Lost accumulated data...(premature collection?)"
-                           port))
-    (unless (eq? (car d) %buffer-port-id)
-      (assertion-violation '%get-buffered-data
-                           "something wrong with the metadata"
-                           d))
-    ((cdr d))))
-
-(define get-output-bytevector %get-buffered-data)
-(define get-output-string %get-buffered-data)
-
-(define (%create-buffer proc)
-  (lambda ()
-    (let-values (((port getter) proc))
-                (metadata-set! port (cons %buffer-port-id getter)))))
-
-(define open-output-bytevector (%create-buffer open-bytevector-output-port))
-(define open-output-string (%create-buffer open-string-output-port))
-
 (define (open-input-bytevector bv) (open-bytevector-input-port bv))
 (define open-input-string open-string-input-port)
 
 (define (bytevector-copy-partial bv start end)
   (let ((ret (make-bytevector (- end start))))
     (define (itr cur)
-      (unless (= (+ start cur) end) 
+      (unless (= (+ start cur) end)
         (bytevector-u8-set! ret cur (bytevector-u8-ref bv (+ start cur)))
         (itr (+ cur 1))))
     (itr 0)
