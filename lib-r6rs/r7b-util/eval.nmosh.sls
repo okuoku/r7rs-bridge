@@ -6,10 +6,13 @@
                  eval
                  null-environment scheme-report-environment)
          (import (rnrs)
+                 (rnrs r5rs)
                  (yuni util files)
                  (primitives 
                    ex:destructive-eval!
                    ex:interaction-environment)
+                 (rename (primitives ex:environment)
+                         (ex:environment environment))
                  (rename (rnrs load) (load load:nmosh)))
 
 (define (interaction-environment) (ex:interaction-environment))
