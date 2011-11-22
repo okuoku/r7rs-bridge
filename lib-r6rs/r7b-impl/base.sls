@@ -39,6 +39,7 @@ vector-map vector-ref vector-set! vector?  when with-exception-handler
 write-bytevector write-char write-partial-bytevector write-u8 zero?
    )
          (import (except (rnrs)
+                         case
                          syntax-rules
                          error
                          define-record-type)
@@ -53,7 +54,11 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (srfi i39)
                  (r7b-util string-buffer)
                  (r7b-util bytevector-buffer)
+                 (r7b-util char-ready)
+                 (r7b-util u8-ready)
+                 (r7b-util port-open)
                  (for (r7b-util syntax-rules) run expand)
+                 (for (r7b-util case) run expand)
                  )
 
 ;; R7RS-bridge format doesn't allow (begin (import ...) ...)
@@ -79,13 +84,6 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
 (define (error-object-message obj)
   (and (message-condition? obj)
        (condition-message obj)))
-
-;; FIXME:
-(define char-ready? 0)
-(define u8-ready? 0)
-
-;; FIXME: use metadata to retrive port state
-(define (port-open? port) #t)
 
 (define (open-input-bytevector bv) (open-bytevector-input-port bv))
 (define open-input-string open-string-input-port)
