@@ -46,8 +46,6 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (rnrs mutable-pairs)
                  (rnrs mutable-strings)
                  (rnrs r5rs)
-                 (only (srfi i13)
-                       string-map)
                  (srfi i0)
                  (srfi i23)
                  (srfi i9)
@@ -104,6 +102,7 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
         (bytevector-u8-set! to (+ at cur) val)
         (itr (+ cur 1)))))
   (itr 0))
+
 
 (define-syntax define-values
   (lambda (x)
@@ -175,10 +174,6 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
     (() (read-u8 (current-input-port)))
     ((port) (get-u8 port))))
 
-(define (string->vector str) (list->vector (string->list str)))
-(define (vector->string vec) (list->string (vector->list vec)))
-(define (vector-copy vec) (list->vector (vector->list vec)))
-
 (define write-bytevector
   (case-lambda
     ((bv port)
@@ -191,5 +186,12 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                                               (current-output-port)))
     ((bv start end port)
      (put-bytevector port bv start (- end start)))))
+
+(define (string->vector str) (list->vector (string->list str)))
+(define (vector->string vec) (list->string (vector->list vec)))
+(define (vector-copy vec) (list->vector (vector->list vec)))
+
+(define (string-map proc . strs)
+  (list->string (apply map proc (map string->list strs))))
 
 )
