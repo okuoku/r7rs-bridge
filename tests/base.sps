@@ -81,4 +81,17 @@
                             (even? 20))))) 
 
 
+(define-syntax mylist
+  (syntax-rules ::: ()
+    ((_ ... :::) (list ... :::))))
 
+(display (mylist 1 2 3))(newline)
+
+(case 1
+  ((0) => (lambda (f) (error "why?")))
+  ((1) => (lambda (g) (display g)(newline)))
+  )
+
+(display (string-map (lambda (c) (if (char=? c #\a) #\b c))
+                     "BABAbaba"
+                     ))(newline)

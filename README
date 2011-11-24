@@ -17,18 +17,24 @@ We use nmosh as a baseline interpreter.
 - Vicare (0.2d3-1)
 
 - Guile 2.x (2.0.3)
-  Unsupported features: weak-vectors, srfi-0
+  Unsupported features: 
+    weak-vectors
+    cond-expand (SRFI-0)
 
 - Petite Chez Scheme 8.x (8.4)
-  Unimplemented features:
-    weak-vectors
   Unsupported features: 
-    R7RS: get-environment-variables (SRFI-98)
+    get-environment-variables (SRFI-98)
 
 - IronScheme (1.0 RC6)
   Unsupported features:
     weak-vectors
     Compile (pre-expand program/library)
+
+- Sagittarius (0.2.2)
+  Unsupported features:
+    weak-vectors
+    Record (SRFI-9)
+    Time
 
 - (Other R6RS, except Racket)
 
@@ -65,6 +71,10 @@ How to use
  - IronScheme -
 
    IronScheme.Console.exe load/ironscheme.scm SCRIPT.SPS
+
+ - Sagittarius Scheme -
+
+   sash -Llib-r6rs -Llib -Lload/sagittarius SCRIPT.SPS
 
  - Patched chibi-scheme -
 

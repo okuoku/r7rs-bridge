@@ -1,0 +1,7 @@
+(library (r7b-util time)
+         (export current-jiffy current-second jiffies-per-second)
+         (import (scheme base))
+(define current-jiffy 0)
+(define current-second 0)
+(define jiffies-per-second 0)
+)
