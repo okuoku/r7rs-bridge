@@ -33,7 +33,6 @@ We use nmosh as a baseline interpreter.
 - Sagittarius (0.2.2)
   Unsupported features:
     weak-vectors
-    Record (SRFI-9)
     Time
 
 - (Other R6RS, except Racket)
