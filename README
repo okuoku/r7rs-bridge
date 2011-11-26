@@ -1,11 +1,16 @@
 R7RS-bridge Project
 ===================
 
-R7RS-bridge project is a reserch project which aims to:
+R7RS-bridge project is a research project which aims to:
 
  - Prepare R6RS library which implements R7RS small language
  - Tryout R7RS small language by implementing various library
 
+Non-Implemented Features
+------------------------
+
+- (scheme division)
+- port-open?, char-ready?, u8-ready?: except Larceny
 
 Supported Implementation
 ------------------------
