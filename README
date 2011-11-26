@@ -11,7 +11,7 @@ Non-Implemented Features
 
 - cond-expand
 - (scheme division)
-- port-open?, char-ready?, u8-ready?: except Larceny
+- port-open?, char-ready?, u8-ready?
 
 Supported Implementation
 ------------------------
@@ -51,6 +51,8 @@ We use nmosh as a baseline interpreter.
     load with environment
     repl
     Compile (pre-expand program/library)
+    char-ready? for string port
+    u8-ready? for bytevector port
 
 - (Other R6RS, except Racket)
 
