@@ -47,10 +47,10 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
                  (rnrs mutable-strings)
                  (rnrs r5rs)
                  (srfi i0)
+                 (srfi i6)
                  (srfi i23)
                  (srfi i9)
                  (srfi i39)
-                 (r7b-util string-buffer)
                  (r7b-util bytevector-buffer)
                  (r7b-util char-ready)
                  (r7b-util u8-ready)
@@ -84,7 +84,6 @@ write-bytevector write-char write-partial-bytevector write-u8 zero?
        (condition-message obj)))
 
 (define (open-input-bytevector bv) (open-bytevector-input-port bv))
-(define open-input-string open-string-input-port)
 
 (define (bytevector-copy-partial bv start end)
   (let ((ret (make-bytevector (- end start))))
