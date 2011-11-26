@@ -26,7 +26,6 @@ We use nmosh as a baseline interpreter.
 - Guile 2.x (2.0.3)
   Unsupported features: 
     load, repl
-    weak-vectors
     cond-expand (SRFI-0)
 
 - Petite Chez Scheme 8.x (8.4)
