@@ -5,7 +5,6 @@
            %create-buffer)
          (import (rnrs) (r7b-util metadata))
 
-
 (define %buffer-port-id '*buffer-port*)
 (define (%get-buffered-data port)
   (let ((d (metadata-ref port)))
@@ -19,11 +18,10 @@
                            d))
     ((cdr d))))
 
-
-
 (define (%create-buffer proc)
   (lambda ()
-    (let-values (((port getter) proc))
-                (metadata-set! port (cons %buffer-port-id getter)))))
+    (let-values (((port getter) (proc)))
+                (metadata-set! port (cons %buffer-port-id getter))
+                port)))
 
 )

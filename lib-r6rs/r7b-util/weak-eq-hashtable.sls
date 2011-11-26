@@ -29,7 +29,7 @@
     (weak-box-set! wv obj)
     (cons wv data)))
 
-(define (q-obj q) (weak-box-ref (car q) 0))
+(define (q-obj q) (weak-box-ref (car q)))
 (define (q-data q) (cdr q))
 
 (define (weak-hashtable-ref wht obj) 

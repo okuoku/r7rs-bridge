@@ -6,5 +6,5 @@
 (define (metadata-set! obj datum)
   (weak-hashtable-set! store obj datum))
 (define (metadata-ref obj)
-  (weak-hashtable-ref store obj #f))
+  (weak-hashtable-ref store obj))
 )
