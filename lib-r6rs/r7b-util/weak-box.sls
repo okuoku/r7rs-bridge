@@ -8,8 +8,8 @@
 (define (weak-box-ref wb) (car wb))
 (define (weak-box-set! wb obj) (set-car! wb obj))
          
-(display "WARNING: Using FAKE implementation of weak-box" 
+(display "WARNING: Using FAKE implementation of weak-box\n" 
          (current-error-port))
-(display "WARNING: MEMORY LEAK will occur"
+(display "WARNING: MEMORY LEAK will occur\n"
          (current-error-port))
 )

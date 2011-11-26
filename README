@@ -15,24 +15,36 @@ Supported Implementation
 We use nmosh as a baseline interpreter.
 
 - Vicare (0.2d3-1)
+  Unsupported features: 
+    load, repl
 
 - Guile 2.x (2.0.3)
   Unsupported features: 
+    load, repl
     weak-vectors
     cond-expand (SRFI-0)
 
 - Petite Chez Scheme 8.x (8.4)
   Unsupported features: 
+    load, repl
     get-environment-variables (SRFI-98)
 
 - IronScheme (1.0 RC6)
   Unsupported features:
+    load, repl
     weak-vectors
     Compile (pre-expand program/library)
 
 - Sagittarius (0.2.2)
   Unsupported features:
+    load, repl
     weak-vectors
+
+- Larceny (0.98b1)
+  Unsupported features:
+    load with environment
+    repl
+    Compile (pre-expand program/library)
 
 - (Other R6RS, except Racket)
 
@@ -73,6 +85,12 @@ How to use
  - Sagittarius Scheme -
 
    sash -Llib-r6rs -Llib -Lload/sagittarius SCRIPT.SPS
+
+ - Larceny -
+
+   larceny -r6rs -path lib-r6rs:lib -program SCRIPT.SPS
+
+   In Win32, use --libdirs lib-r6rs;lib (semicolon)
 
  - Patched chibi-scheme -
 
