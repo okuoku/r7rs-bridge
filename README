@@ -10,7 +10,6 @@ Non-Implemented Features
 ------------------------
 
 - cond-expand
-- (scheme division)
 - port-open?, char-ready?, u8-ready?
 
 Supported Implementation
