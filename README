@@ -9,6 +9,7 @@ R7RS-bridge project is a research project which aims to:
 Non-Implemented Features
 ------------------------
 
+- cond-expand
 - (scheme division)
 - port-open?, char-ready?, u8-ready?: except Larceny
 
