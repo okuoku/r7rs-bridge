@@ -37,7 +37,6 @@ We use nmosh as a baseline interpreter.
 - IronScheme (1.0 RC6)
   Unsupported features:
     load, repl
-    weak-vectors
     Compile (pre-expand program/library)
 
 - Sagittarius (0.2.2)
