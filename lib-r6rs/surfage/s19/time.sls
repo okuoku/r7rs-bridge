@@ -41,7 +41,8 @@
     (rnrs r5rs)
     (rnrs mutable-strings)
     (surfage s19 time compat)
-    (surfage s6 basic-string-ports)
+    (srfi i6)
+    ;(surfage s6 basic-string-ports)
     (surfage private include))
   
   (define read-line

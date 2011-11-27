@@ -72,6 +72,7 @@ How to use
  - VICARE -
 
    vicare -L lib-r6rs -L lib SCRIPT.SPS
+   (--r6rs-repl SCRIPT.SPS needed under some circumstances..)
 
  - GUILE -
 
