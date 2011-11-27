@@ -142,6 +142,10 @@ surfage - win32 patched version of Surfage library.
 TESTS
 -----
 
+chibi-scheme - chibi-scheme R7RS tests
+ Source : chibi-scheme
+ License: Unknown. (chibi-scheme + R7RS)
+
 laceny-R6RS - R6RS benchmarks
  Source : (Larceny)
  License: Unknown. 
