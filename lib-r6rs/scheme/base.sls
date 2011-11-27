@@ -1,6 +1,7 @@
 #!r6rs
 (library (scheme base)
          (export
+_
 ;; from R7RS draft 4
 * + - ... / < <= = => > >= abs and append apply assoc assq assv begin
 binary-port?  boolean? bytevector-copy bytevector-copy! bytevector-copy-partial
