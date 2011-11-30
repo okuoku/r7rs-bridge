@@ -6,7 +6,7 @@
 ;; string normalization
 ;; We will use Unicode NFC
 (define (string-normalize str)
-  str)
+  (string-normalize-nfc str))
 
 (define (make-ni proc)
   (lambda x (apply proc (map x string-normalize))))
